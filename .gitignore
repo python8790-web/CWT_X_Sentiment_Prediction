@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Large datasets, databases, and temporary files
+data/raw/
+data/bitcoin_tweets_latest.csv
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+**/*.sqlite-*
+**/*.db-*
+*.csv
+!data/processed/bitcoin_historical_hourly.csv
+!data/processed/hourly_sentiment.csv
+!data/processed/bitcoin_merged_hourly.csv
+data/processed/*tweet*.csv
+data/processed/*apify*.csv
+*.csv-wal
+*.csv-shm
+*.parquet
+*.feather
+*.pickle
+*.pkl
+*.zip
+*.gz
+
+# Project outputs
+outputs/
+reports/*.pdf
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

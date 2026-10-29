@@ -50,6 +50,8 @@ python scripts\load_to_sqlite.py --db data\bitcoin_project_rebuilt.db
 python -m pytest -q
 ```
 
+`generate_reports.py` copies six assessment chart snapshots from `outputs\charts\` into `reports\charts\` for inclusion with the report on GitHub.
+
 The aggregator reads large tweet files in chunks. Its hourly median combines chunk medians when the same UTC hour crosses a chunk boundary, so that edge case can be approximate. Do not run `prepare_data.py` unless the authorized raw export is present and you intend to regenerate the large scored tweet files.
 
 ## Optional live data
@@ -94,6 +96,7 @@ Use `--start-date YYYY-MM-DD`, `--end-date YYYY-MM-DD`, and (for Tavily) `--sear
 - `outputs\walk_forward_metrics.csv`, `outputs\walk_forward_predictions.csv` — zero-return baseline and chronological out-of-sample results.
 - `outputs\strategy_metrics.csv`, `outputs\strategy_hourly_returns.csv` — non-overlapping, positive-horizon strategy evaluation with turnover costs.
 - `outputs\charts\` — price/sentiment, volume, sentiment/return, and out-of-sample MAE charts.
+- `reports\charts\` — six small chart snapshots linked in the evaluation report.
 - `evaluation_report.md`, `sentiment_outlook.md` — generated from current local outputs, with live-data status explicitly distinguished.
 - `data\bitcoin_project_rebuilt.db` — SQLite copy of processed tables; use a different file name to preserve an existing database.
 
@@ -101,4 +104,4 @@ n+0 is the completed hourly return ending at its timestamp. It is included only 
 
 ## Data and coverage limitations
 
-The included local sample covers 2025-03-11 through 2026-02-28 UTC. It does not cover the latest 180-day period ending now. Historical tweet sampling may be incomplete, and no real-time status is inferred from old sample data. The assessment report records current data coverage, actual integration outputs, model metrics, strategy assumptions, and limitations.
+The scored local X-post file contains 4,573,496 records timestamped from 2025-03-06 14:42:53 through 2026-03-02 23:59:59 UTC; the aligned modeling sample covers 2025-03-11 through 2026-02-28 UTC. The scored posts do not cover the latest 180-day period ending 2026-10-29 (which begins 2026-05-02). The raw export also contains invalid timestamps and parseable date outliers, so its minimum timestamp is not representative of usable model coverage. Historical tweet sampling may be incomplete, and no real-time status is inferred from old sample data. The assessment report records current data coverage, actual integration outputs, model metrics, strategy assumptions, and limitations.
